@@ -1,0 +1,3 @@
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_Y29tcGxldGUtcmFtLTkzLmNsZXJrLmFjY291bnRzLmRldiQ
+CLERK_SECRET_KEY=sk_test_LA5laiSem8aAoKIMaPG3QRLWEVOCwvq5Ru85MgBsLR
+DATABASE_URL=postgresql://DevJS:b9hXZgCEIK1q@ep-little-pond-a534j929.us-east-2.aws.neon.tech/expense_tracker?sslmode=require
