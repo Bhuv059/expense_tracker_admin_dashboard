@@ -12,6 +12,10 @@ export const checkUser = async () => {
   if (loggedInUser) {
     return loggedInUser;
   }
+  console.log("loggedInUser");
+  console.log(loggedInUser);
+  console.log("currentUser");
+  console.log(currentUser);
 
   // if not in db, create new user
   const newUser = await db.user.create({

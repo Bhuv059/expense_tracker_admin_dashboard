@@ -9,13 +9,11 @@ const TransactionList = async () => {
 
   return (
     <>
-      <Card className="h-[320px] bg-slate-100 dark:bg-slate-800 p-5">
+      <Card className="h-[350px] bg-slate-100 dark:bg-slate-800 p-5">
         <CardContent>
-          <h3 className="text-3xl lg:text-5xl  font-semibold  text-cyan-700 dark:text-cyan-500 text-center mb-2">
-            Trasaction Details
-          </h3>
+          <h3 className="h3">Trasactions List</h3>
 
-          <div className="md:flex flex-col  mb-6">
+          <div className="md:flex flex-col mt-2">
             <ul className=" w-full">
               {transactions &&
                 transactions.map((transaction: Transaction) => (
@@ -31,6 +29,13 @@ const TransactionList = async () => {
                 </div>
               )}
             </ul>
+
+            <div className=" md:flex md:items-right">
+              <div className="md:w-80"></div>
+              <button className="shadow  bg-cyan-700  hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                Next
+              </button>
+            </div>
           </div>
         </CardContent>
       </Card>

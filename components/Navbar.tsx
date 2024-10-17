@@ -16,7 +16,7 @@ import { Button } from "./ui/button";
 const Navbar = () => {
   return (
     <>
-      <div className="bg-primary dark:bg-slate-700 text-white py-2 px-5 ">
+      <div className="bg-black dark:bg-slate-700 text-white py-2 px-5 ">
         <Link href="/">
           <div className="flex flex-1 ">
             <Image

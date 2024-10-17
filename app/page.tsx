@@ -5,6 +5,7 @@ import Balance from "@/components/Balance";
 import AddTransaction from "@/components/AddTransaction";
 import TransactionList from "@/components/TransactionList";
 import IncomeExpense from "@/components/IncomeExpense";
+import AnalyticsChart from "@/components/AnalyticsChart";
 
 const Home = async () => {
   const user = await currentUser();
@@ -24,6 +25,7 @@ const Home = async () => {
           <IncomeExpense />
           <AddTransaction />
           <TransactionList />
+          {/*  <AnalyticsChart /> */}
         </div>
       </div>
     </>

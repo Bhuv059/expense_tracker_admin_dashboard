@@ -13,7 +13,7 @@ const Balance = async () => {
       <DashboardCard
         title={"Balance"}
         count={addCommas(Number(balance?.toFixed(2) ?? 0))}
-        icon={<BadgeDollarSign />}
+        icon={<BadgeDollarSign className="w-5 h-5" />}
       />
     </div>
   );

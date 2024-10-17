@@ -3,7 +3,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
-import { Transaction } from "@/lib/types";
+import {
+  EditUserFormData,
+  EditUserParams,
+  Transaction,
+  UserEditResult,
+  UserProfile,
+} from "@/lib/types";
 
 async function getUserBalance(): Promise<{ balance?: number; error?: string }> {
   const { userId } = auth();
@@ -45,7 +51,6 @@ export async function addTransaction(
 ): Promise<TransactionResult> {
   const textValue = formData.get("text");
   const amountValue = formData.get("amount");
-
   //check for input values
   if (!textValue || textValue === "" || !amountValue) {
     return { error: " Text or amount is missing" };
@@ -60,7 +65,7 @@ export async function addTransaction(
   if (!userId) {
     return { error: "User not found" };
   }
-
+  console.log(userId);
   try {
     const transactionData: TransactionData = await db.transaction.create({
       data: { text, amount, userId },
@@ -114,6 +119,7 @@ export async function getTransaction(): Promise<{
 
   try {
     const transactions = await db.transaction.findMany({
+      take: 3,
       where: { userId },
       orderBy: {
         createdAt: "desc",
@@ -145,5 +151,87 @@ export async function deleteTransaction(
     return { message: "Transaction deleted" };
   } catch (error) {
     return { error: "Database error: Transaction not deleted" };
+  }
+}
+
+export interface GetUserProfileResult {
+  profile?: UserProfile;
+  error?: string;
+}
+
+export async function getUserProfile(): Promise<GetUserProfileResult> {
+  const { userId } = auth();
+  if (!userId) return { error: "User not found" };
+
+  try {
+    const profile = await db.user.findFirst({
+      where: {
+        clerkUserId: userId,
+      },
+    });
+    return { profile };
+  } catch (error) {
+    return { error: "Database error: Unable to get user profile" };
+  }
+}
+
+export async function profileId() {
+  const { userId } = auth();
+  if (!userId) return { error: "User not found" };
+
+  try {
+  } catch (error) {
+    return { error: "Database error: User profile not updated" };
+  }
+}
+
+export async function EditUserProfile(
+  formData: EditUserFormData
+): Promise<UserEditResult> {
+  console.log("formData");
+  console.log(formData);
+
+  const nameValue = formData.name;
+  const emailValue = formData.email;
+  const phoneValue = formData.phone;
+  const addressValue = formData.address;
+
+  //check for input values
+  if (
+    !nameValue ||
+    !emailValue ||
+    emailValue === "" ||
+    !phoneValue ||
+    phoneValue === "" ||
+    !addressValue ||
+    addressValue === ""
+  ) {
+    return { error: " Please enter the missing value" };
+  }
+
+  const name: string = nameValue.toString();
+  const email: string = emailValue.toString();
+  const phone: string = phoneValue.toString();
+  const address: string = addressValue.toString();
+
+  //Get logged in user
+  const { userId } = auth();
+
+  if (!userId) {
+    return { error: "User not found" };
+  }
+  try {
+    console.log("check");
+    console.log(name, email, phone, address);
+    await db.user.update({
+      data: { name, email, phone, address },
+      where: {
+        clerkUserId: userId,
+      },
+    });
+    revalidatePath("/");
+    return { data: "Profile data updated successfully" };
+  } catch (error) {
+    return { error: "User not updated!" };
   }
 }

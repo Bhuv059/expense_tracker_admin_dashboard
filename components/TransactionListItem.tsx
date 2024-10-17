@@ -34,7 +34,7 @@ const TransactionListItem = ({ transaction }: { transaction: Transaction }) => {
                 : "border-r-4 border-green-500"
             }
           >
-            <div className="flex flex-row p-2  group-hover:bg-cyan-700  group-hover:text-gray-300  justify-between shadow-2xl  bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+            <div className="flex flex-row p-2  group-hover:bg-cyan-700  group-hover:text-gray-300  justify-between   bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none ">
               <label>{transaction.text}</label>
               <label className="text-right  ">
                 {sign}

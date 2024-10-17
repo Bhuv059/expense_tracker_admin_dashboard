@@ -12,13 +12,13 @@ const IncomeExpense = async () => {
         <DashboardCard
           title={"Income"}
           count={income?.toFixed(2)!}
-          icon={<BadgeDollarSign />}
+          icon={<BadgeDollarSign className=" w-5 h-5" />}
           cssClass="text-green-600"
         />
         <DashboardCard
           title={"Expense"}
           count={expense?.toFixed(2)!}
-          icon={<BadgeDollarSign />}
+          icon={<BadgeDollarSign className=" w-5 h-5" />}
           cssClass="text-red-600"
         />
       </div>
