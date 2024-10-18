@@ -19,18 +19,20 @@ const page = async () => {
   const { profile, error } = await getUserProfile();
   return (
     <>
-      <h1 className="text-xl font-semibold  ">
-        <span className="text-xl font-semibold  text-cyan-700  dark:text-cyan-500">
-          Profile
-        </span>
-      </h1>
-      <div className=" relative overflow-x-auto shadow-md sm:rounded-lg h-[550px] w-[550px] ">
+      <div className=" relative overflow-x-auto shadow-md sm:rounded-lg h-[550px] w-[500px] ">
         <div className="">
           <Card className="h-[550px] bg-slate-100 dark:bg-slate-800 p-5">
             <CardContent>
               <div className="mt-2 flex  flex-row gap-5 justify-center items-center  text-cyan-700 dark:text-cyan-500 ">
+                <h1 className="text-xl font-semibold  ">
+                  <span className="text-xl font-semibold  text-cyan-700  dark:text-cyan-500">
+                    Profile Data
+                  </span>
+                </h1>
+              </div>
+              <div className="mt-5 flex  flex-row gap-5 justify-center items-center  text-cyan-700 dark:text-cyan-500 ">
                 <Image
-                  src="/img/bankLogo.png"
+                  src={user?.imageUrl}
                   alt="ExpenseTracker"
                   width={40}
                   height={40}
@@ -39,7 +41,8 @@ const page = async () => {
                   {user?.firstName} {user?.lastName}
                 </h3>
               </div>
-              <div className="mt-10 flex flex-1 ">
+
+              <div className="mt-5 flex flex-1 ">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                   <tbody>
                     <tr className="tr">

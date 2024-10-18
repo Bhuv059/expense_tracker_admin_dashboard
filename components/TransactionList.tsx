@@ -3,13 +3,15 @@ import { Transaction } from "@/lib/types";
 import React from "react";
 import TransactionListItem from "./TransactionListItem";
 import { Card, CardContent } from "./ui/card";
+import Link from "next/link";
 
 const TransactionList = async () => {
-  const { transactions, error } = await getTransaction();
-
+  const { transactions, error } = await getTransaction({
+    filter: "Dashboard",
+  });
   return (
     <>
-      <Card className="h-[350px] bg-slate-100 dark:bg-slate-800 p-5">
+      <Card className="h-[400px] bg-slate-100 dark:bg-slate-800 p-5">
         <CardContent>
           <h3 className="h3">Trasactions List</h3>
 
@@ -32,9 +34,11 @@ const TransactionList = async () => {
 
             <div className=" md:flex md:items-right">
               <div className="md:w-80"></div>
-              <button className="shadow  bg-cyan-700  hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                Next
-              </button>
+              <Link href="/transactions">
+                <button className="shadow  bg-cyan-700  hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                  Next
+                </button>
+              </Link>
             </div>
           </div>
         </CardContent>

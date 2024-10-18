@@ -15,8 +15,6 @@ const DashboardCard = ({
   icon,
   cssClass,
 }: DashboardCardProps) => {
-  console.log("cssClass");
-  console.log(cssClass);
   return (
     <Card className="h-[100px] w-full bg-slate-100 dark:bg-slate-800 p-5">
       <CardContent>

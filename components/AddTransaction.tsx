@@ -12,9 +12,6 @@ const AddTransaction = () => {
   const clientAction = async (formData: FormData) => {
     const { data, error } = await addTransaction(formData);
 
-    console.log("formData");
-    console.log(formData);
-
     if (error) {
       toast.error(error);
     } else {
@@ -25,12 +22,12 @@ const AddTransaction = () => {
 
   return (
     <>
-      <Card className="h-[350px] bg-slate-100 dark:bg-slate-800 p-5">
-        <CardContent className="h-[350px]">
+      <Card className="h-[400px] bg-slate-100 dark:bg-slate-800 p-5">
+        <CardContent>
           <h3 className="h3">Make Trasaction</h3>
-          <form ref={formRef} action={clientAction} className="mt-2">
+          <form ref={formRef} action={clientAction} className="mt-10">
             <div className=" ">
-              <div className="md:flex flex-col  mb-6">
+              <div className="md:flex flex-col  mb-10">
                 <div>
                   <label className="block text-gray-500 font-bold  mb-1 md:mb-0 pr-4  dark:text-gray-400">
                     Text
@@ -47,7 +44,7 @@ const AddTransaction = () => {
                 </div>
               </div>
 
-              <div className="md:flex flex-col  mb-6">
+              <div className="md:flex flex-col  mb-10">
                 <label className="block text-gray-500 font-bold  mb-1 md:mb-0 pr-4  dark:text-gray-400">
                   Amount
                 </label>
@@ -64,7 +61,7 @@ const AddTransaction = () => {
                 ></input>
               </div>
 
-              <div className=" md:flex md:items-right">
+              <div className="md:flex md:items-right">
                 <div className="md:w-80"></div>
                 <button className="shadow  bg-cyan-700  hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                   Save

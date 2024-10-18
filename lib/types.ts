@@ -35,3 +35,11 @@ export interface EditUserFormData {
   address?: string;
   path?: string;
 }
+
+export interface GetTransactionParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pathName?: string;
+}

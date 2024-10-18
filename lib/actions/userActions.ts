@@ -6,10 +6,12 @@ import { revalidatePath } from "next/cache";
 import {
   EditUserFormData,
   EditUserParams,
+  GetTransactionParams,
   Transaction,
   UserEditResult,
   UserProfile,
 } from "@/lib/types";
+import { count } from "console";
 
 async function getUserBalance(): Promise<{ balance?: number; error?: string }> {
   const { userId } = auth();
@@ -65,7 +67,6 @@ export async function addTransaction(
   if (!userId) {
     return { error: "User not found" };
   }
-  console.log(userId);
   try {
     const transactionData: TransactionData = await db.transaction.create({
       data: { text, amount, userId },
@@ -107,19 +108,27 @@ export async function getIncomeExpense(): Promise<{
   }
 }
 
-export async function getTransaction(): Promise<{
+export async function getTransaction(params: GetTransactionParams): Promise<{
   transactions?: Transaction[];
   error?: string;
 }> {
+  let { page = 0, pageSize = 9, searchQuery, filter = 0, pathName } = params;
+
   const { userId } = auth();
+  let limit = 0;
 
   if (!userId) {
     return { error: "User not found" };
   }
+  if (filter && filter === "Dashboard") pageSize = 4;
 
   try {
     const transactions = await db.transaction.findMany({
-      take: 3,
+      /*  skip: (page - 1) * pageSize,
+      take: limit ? 2 : pageSize,
+      */
+      skip: page ? (page - 1) * pageSize : 0,
+      take: pageSize,
       where: { userId },
       orderBy: {
         createdAt: "desc",
@@ -188,9 +197,6 @@ export async function profileId() {
 export async function EditUserProfile(
   formData: EditUserFormData
 ): Promise<UserEditResult> {
-  console.log("formData");
-  console.log(formData);
-
   const nameValue = formData.name;
   const emailValue = formData.email;
   const phoneValue = formData.phone;
@@ -221,8 +227,6 @@ export async function EditUserProfile(
     return { error: "User not found" };
   }
   try {
-    console.log("check");
-    console.log(name, email, phone, address);
     await db.user.update({
       data: { name, email, phone, address },
       where: {

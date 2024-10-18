@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Sidebar from "@/components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { WelcomeUser } from "@/components/WelcomeUser";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -53,6 +54,8 @@ export default function RootLayout({
                 <Sidebar />
               </div>
               <div className="p-5 flex flex-col w-full md:max-w-[1140px]">
+                <WelcomeUser />
+
                 {children}
               </div>
             </div>
