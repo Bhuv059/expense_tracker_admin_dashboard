@@ -12,7 +12,7 @@ const Guest = () => {
       <p className="text-lg font-light text-center ">
         Please sign in to manage your transactions
       </p>
-      <div className=" flex flex-row  justify-center items-center ">
+      <div className=" flex flex-row  justify-center items-center text-black ">
         <Button className="h-[25px] w-[65px] bg-slate-400 text-black font-bold hover:bg-slate-300">
           <SignInButton />
         </Button>

@@ -5,13 +5,11 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import {
   EditUserFormData,
-  EditUserParams,
   GetTransactionParams,
   Transaction,
   UserEditResult,
   UserProfile,
 } from "@/lib/types";
-import { count } from "console";
 
 async function getUserBalance(): Promise<{ balance?: number; error?: string }> {
   const { userId } = auth();
@@ -112,7 +110,7 @@ export async function getTransaction(params: GetTransactionParams): Promise<{
   transactions?: Transaction[];
   error?: string;
 }> {
-  let { page = 0, pageSize = 9, searchQuery, filter = 0, pathName } = params;
+  let { page = 0, pageSize = 1, searchQuery, filter = 0, pathName } = params;
 
   const { userId } = auth();
   let limit = 0;
@@ -171,7 +169,6 @@ export interface GetUserProfileResult {
 export async function getUserProfile(): Promise<GetUserProfileResult> {
   const { userId } = auth();
   if (!userId) return { error: "User not found" };
-
   try {
     const profile = await db.user.findFirst({
       where: {

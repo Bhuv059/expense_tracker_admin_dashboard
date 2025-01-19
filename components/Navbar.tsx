@@ -12,6 +12,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
@@ -35,12 +36,10 @@ const Navbar = () => {
                   <div className="mt-2 ">
                     <UserButton />
                   </div>
+                  <MobileNav />
                 </SignedIn>
+
                 <SignedOut>
-                  {/* <Button className=" h-[25px] w-[65px] px-3 py-2 bg-slate-400 text-black font-bold hover:bg-slate-50  ">
-                    <SignInButton />
-                  </Button>
- */}
                   <Button className="h-[25px] w-[65px]  px-3 mt-2 bg-slate-50 text-black font-bold hover:bg-slate-400">
                     <SignUpButton />
                   </Button>

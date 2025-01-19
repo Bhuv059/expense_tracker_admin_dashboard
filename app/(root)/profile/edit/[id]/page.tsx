@@ -12,7 +12,7 @@ const page = async () => {
 
   return (
     <>
-      <div className=" relative overflow-x-auto shadow-md sm:rounded-lg h-[550px] w-[500px] ">
+      <div className=" relative overflow-x-auto shadow-md sm:rounded-lg h-[550px] w-[500px] max-md:w-full sm:items-center ">
         <div className="">
           <Card className="h-[550px] bg-slate-100 dark:bg-slate-800 p-5">
             <CardContent>

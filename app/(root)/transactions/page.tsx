@@ -1,10 +1,11 @@
+import Guest from "@/components/Guest";
 import Pagination from "@/components/Pagination";
 import TransactionListItem from "@/components/TransactionListItem";
 import { Card, CardContent } from "@/components/ui/card";
 import { getTransaction } from "@/lib/actions/userActions";
+import { PAGESIZE } from "@/lib/contants";
 import { currentUser } from "@clerk/nextjs/server";
 import { Transaction } from "@prisma/client";
-import Image from "next/image";
 import React from "react";
 
 interface SearchParamsProps {
@@ -12,10 +13,13 @@ interface SearchParamsProps {
 }
 const page = async ({ searchParams }: SearchParamsProps) => {
   const user = await currentUser();
+  if (!user) return <Guest />;
+
   const { transactions, error } = await getTransaction({
     searchQuery: searchParams.q,
     filter: searchParams.filter,
     page: searchParams.page ? +searchParams.page : 1,
+    pageSize: PAGESIZE,
   });
 
   return (
@@ -50,7 +54,7 @@ const page = async ({ searchParams }: SearchParamsProps) => {
                       <Pagination
                         pageNumber={searchParams?.page ? +searchParams.page : 1}
                         // @ts-ignore
-                        isNext={transactions?.length < 2 ? false : true}
+                        isNext={transactions?.length < PAGESIZE ? false : true}
                       />
                     </div>
                   </ul>

@@ -1,3 +1,4 @@
+import Guest from "@/components/Guest";
 import { Card, CardContent } from "@/components/ui/card";
 import { getUserProfile } from "@/lib/actions/userActions";
 import { currentUser } from "@clerk/nextjs/server";
@@ -7,6 +8,7 @@ import React from "react";
 
 const page = async () => {
   const user = await currentUser();
+  if (!user) return <Guest />;
   const formatDate = (dateString: any) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -19,7 +21,7 @@ const page = async () => {
   const { profile, error } = await getUserProfile();
   return (
     <>
-      <div className=" relative overflow-x-auto shadow-md sm:rounded-lg h-[550px] w-[500px] ">
+      <div className=" relative overflow-x-auto shadow-md sm:rounded-lg h-[550px] w-[500px] max-md:w-full sm:items-center ">
         <div className="">
           <Card className="h-[550px] bg-slate-100 dark:bg-slate-800 p-5">
             <CardContent>

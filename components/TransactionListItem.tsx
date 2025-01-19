@@ -25,7 +25,7 @@ const TransactionListItem = ({ transaction }: { transaction: Transaction }) => {
   const sign = transaction.amount < 0 ? "-" : "+";
   return (
     <li className="group  md:flex flex-col  mb-4 text-sm  text-center">
-      <div className=" grid grid-cols-5  mb-2  ">
+      <div className=" grid grid-cols-5  mb-2  group relative ">
         <div className="col-span-4 rounded-md">
           <div
             className={
@@ -43,7 +43,7 @@ const TransactionListItem = ({ transaction }: { transaction: Transaction }) => {
             </div>
           </div>
         </div>
-        <div className=" bg-gray-200 text-black   group-hover:bg-cyan-700  group-hover:text-gray-300 ">
+        <div className="invisible group-hover:visible group-hover: w-[35px]   group-hover:bg-cyan-700  group-hover:text-gray-300   bg-gray-200 text-black">
           <Button
             variant="outline"
             size="icon"

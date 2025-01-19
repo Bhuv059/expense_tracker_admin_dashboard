@@ -85,13 +85,13 @@ const ProfileDetails = ({ profileDetails }: Props) => {
                 <th scope="row" className="th">
                   Name
                 </th>
-                <td className="px-1 py-2 ">
+                <td>
                   <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                       <FormItem className="flex w-full flex-col">
-                        <FormControl className="mt-3.5">
+                        <FormControl className="px-2 mt-1 mb-1">
                           <Input
                             //className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border  "
                             type="text"
@@ -111,18 +111,18 @@ const ProfileDetails = ({ profileDetails }: Props) => {
                 <th scope="row" className="th">
                   Email
                 </th>
-                <td className="px-1 ">
+                <td>
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem className="flex w-full flex-col">
-                        <FormControl className="">
+                        <FormControl className="px-2 mt-1 mb-1">
                           <Input
                             //className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border  "
                             type="text"
                             id="email"
-                            className="mt-2 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full  text-gray-700 leading-tight focus:outline-none focus:bg-white"
+                            className=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full  text-gray-700 leading-tight focus:outline-none focus:bg-white"
                             {...field}
                           />
                         </FormControl>
@@ -136,13 +136,13 @@ const ProfileDetails = ({ profileDetails }: Props) => {
                 <th scope="row" className="th">
                   Phone
                 </th>
-                <td className="px-1 py-1 ">
+                <td>
                   <FormField
                     control={form.control}
                     name="phone"
                     render={({ field }) => (
                       <FormItem className="flex w-full flex-col">
-                        <FormControl className="mt-3.5">
+                        <FormControl className="px-2 mt-1 mb-1">
                           <Input
                             //className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border  "
                             type="text"
@@ -161,13 +161,13 @@ const ProfileDetails = ({ profileDetails }: Props) => {
                 <th scope="row" className="th">
                   Address
                 </th>
-                <td className=" py-1">
+                <td>
                   <FormField
                     control={form.control}
                     name="address"
                     render={({ field }) => (
                       <FormItem className="flex w-full flex-col">
-                        <FormControl className="mt-3.5">
+                        <FormControl className="px-2 mt-1 mb-1">
                           <Input
                             //className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border  "
                             type="text"
