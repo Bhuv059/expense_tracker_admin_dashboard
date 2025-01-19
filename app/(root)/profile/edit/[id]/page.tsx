@@ -25,7 +25,7 @@ const page = async () => {
               </div>
               <div className="mt-5 flex  flex-row gap-5 justify-center items-center  text-cyan-700 dark:text-cyan-500 ">
                 <Image
-                  src={user?.imageUrl? user.imageUrl : "/img/user.png",}
+                  src={user?.imageUrl ? user.imageUrl : "/img/user.png"}
                   alt="ExpenseTracker"
                   width={40}
                   height={40}
