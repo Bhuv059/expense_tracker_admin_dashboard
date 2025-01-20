@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 import {
   LineChart,
   Line,
@@ -44,3 +44,4 @@ const AnalyticsChart = async () => {
 };
 
 export default AnalyticsChart;
+ */
