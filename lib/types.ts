@@ -11,10 +11,8 @@ export interface UserProfile {
   email: string;
   phone: string;
   address: string;
-  // DateOfBirth: Date;
   clerkUserId: string;
 }
-
 export interface EditUserParams {
   id: string;
   name: string;

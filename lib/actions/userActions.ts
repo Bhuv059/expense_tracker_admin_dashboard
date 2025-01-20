@@ -175,6 +175,8 @@ export async function getUserProfile(): Promise<GetUserProfileResult> {
         clerkUserId: userId,
       },
     });
+    // @ts-ignore
+
     return { profile };
   } catch (error) {
     return { error: "Database error: Unable to get user profile" };
